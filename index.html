@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Music Player</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="player.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="song-info-container">
+      <div data-amplitude-song-info="name"></div>
+    </div>
+    <img class="cover-image" data-amplitude-song-info="cover_art_url" />
+    <div class="song-progress-container">
+      <div>
+        <span class="amplitude-current-minutes"></span>:<span
+          class="amplitude-current-seconds"
+        ></span>
+      </div>
+      <div>
+        <input type="range" class="amplitude-song-slider" step=".1" />
+        <span class="amplitude-duration-minutes"></span>:<span
+          class="amplitude-duration-seconds"
+        ></span>
+      </div>
+    </div>
+    <div class="controls" style="text-align: center">
+      <div class="amplitude-stop"></div>
+      <div class="amplitude-play-pause"></div>
+      <div class="amplitude-mute"></div>
+      <input type="range" class="amplitude-volume-slider" />
+    </div>
+    <div class="song-info-container">
+      <div data-amplitude-song-info="album"></div>
+      <div data-amplitude-song-info="artist"></div>
+    </div>
+
+    <script src="./node_modules/amplitudejs/dist/amplitude.js"></script>
+    <script src="./player.js"></script>
+    <script>
+      const playPauseButton = document.querySelector(".amplitude-play-pause");
+      let isPlaying = false;
+
+      playPauseButton.addEventListener("click", () => {
+        isPlaying = !isPlaying;
+
+        if (isPlaying) {
+          playPauseButton.classList.add("is-playing");
+        } else {
+          playPauseButton.classList.remove("is-playing");
+        }
+      });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
